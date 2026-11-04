@@ -1,9 +1,10 @@
-import express from "express"
-import {createEvent, getAllEvent} from "../controllers/eventController.js"
+import express from "express";
+import { createEvent, getAllEvents } from "../controllers/eventController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/create", createEvent),
-router.patch("/get-all-event", getAllEvent)
+router.post("/create", protect, createEvent);
+router.get("/get-all-event", getAllEvents);
 
-export default router
+export default router;

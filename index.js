@@ -4,12 +4,13 @@ import dotenv from "dotenv";
 import "./models/userModel.js"; 
 import eventRoutes from "./routes/eventRoute.js";
 import attendanceRoutes from "./routes/attendanceRoute.js";
-
+import authRoutes from "./routes/authRoute.js";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
+app.use("/api/auth", authRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/attendance", attendanceRoutes);
 
